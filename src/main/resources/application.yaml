@@ -24,6 +24,11 @@ damap:
     # the same as here, otherwise the tests fail
     admin-role-name: Damap Admin
 
+  # DAMAPs base URL is used as an ID in the protocol
+  ldn-id: "http://localhost:4200/"
+  ldn-inbox: "http://localhost:4200/ldn/inbox"
+  ldn-name: "DAMAP"
+
   # tenant-aware here means that in case of multitenancy, these configs need to be set per tenant, and not per instance
   # for more information, see the multitenancy documentation on the website
   tenant-aware:
@@ -80,6 +85,13 @@ damap:
         query-value: "ORCID"
         class-name: "org.damap.base.integration.orcid.ORCIDPersonServiceImpl"
 
+    ## Set up connections to an invenio instance here
+    # Base Invenio URL
+    invenio-endpoint-url: "https://test.researchdata.tuwien.ac.at"
+    invenio-re3data-id: "r3d100013557"
+
+    invenio-ldn-inbox: "https://test.researchdata.tuwien.ac.at/ldn/inbox"
+
     # Used to connect person/project cris systems that are not Pure based
     # Can be ignored, if generic cris integration is not used
     generic-cris-url: "https://your-generic-cris-instance-url"
@@ -88,6 +100,22 @@ damap:
     # Leaving this URL empty will deactivate the feature in the frontend
     # Right now this feature is experimental, to test it use the value https://ostrails-dmp-evaluation.arisnet.ac.at
     evaluation-service-url:
+
+    # Data to build a host object when importing
+    invenio-availability: "99.5%"
+    invenio-backup-frequency: "Bi-Weekly"
+    invenio-backup-type: "Magnetic Bands"
+    # needs to be of type target/generated-sources/rda-dmp-common-standard/src/java/main/org/damap/base/rda/dmpcommonstandard/Certification.java
+    invenio-certified-with: "coretrustseal"
+    invenio-description: "Insert description here"
+    # needs to be a two letter country code
+    invenio-geo-location: "AT"
+    invenio-title: "TU Wien Research Data"
+    # needs to be of type target/generated-sources/rda-dmp-common-standard/src/java/main/org/damap/base/rda/dmpcommonstandard/PIDSystemType.java
+    invenio-pid-system: "DOI"
+    invenio-storage-type: "todo: find out later"
+    # needs to be of type target/generated-sources/rda-dmp-common-standard/src/java/main/org/damap/base/rda/dmpcommonstandard/Booleanish.java
+    invenio-support-versioning: "yes"
 
 invenio:
   disabled: true
