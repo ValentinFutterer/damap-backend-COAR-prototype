@@ -30,6 +30,24 @@ public interface DamapTenantAwareConfig {
 
   URL elsevierPurePersonsFile();
 
+  String invenioEndpointUrl();
+
+  String invenioRe3dataId();
+
+  String invenioLdnInbox();
+
+
+  String invenioAvailability();
+  String invenioBackupFrequency();
+  String invenioBackupType();
+  String invenioCertifiedWith();
+  String invenioDescription();
+  String invenioGeoLocation();
+  String invenioTitle();
+  String invenioPidSystem();
+  String invenioStorageType();
+  String invenioSupportVersioning();
+
   interface Fields {
     boolean ethicalReportEnabled();
   }

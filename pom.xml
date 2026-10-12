@@ -482,13 +482,25 @@
         <groupId>org.jsonschema2pojo</groupId>
         <artifactId>jsonschema2pojo-maven-plugin</artifactId>
         <version>1.1.1</version>
-        <configuration>
-          <annotationStyle>jackson</annotationStyle>
-          <sourceDirectory>${basedir}/src/main/resources/org/damap/base/schema</sourceDirectory>
-          <targetPackage>org.damap.base.rest.madmp.dto</targetPackage>
-        </configuration>
         <executions>
           <execution>
+            <id>generate-madmp-dtos</id>
+            <configuration>
+              <annotationStyle>jackson</annotationStyle>
+              <sourceDirectory>${basedir}/src/main/resources/org/damap/base/schema/madmp</sourceDirectory>
+              <targetPackage>org.damap.base.rest.madmp.dto</targetPackage>
+            </configuration>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>generate-datacite-dtos</id>
+            <configuration>
+              <annotationStyle>jackson</annotationStyle>
+              <sourceDirectory>${basedir}/src/main/resources/org/damap/base/schema/datacite/datacite-v4.5.json</sourceDirectory>
+              <targetPackage>org.damap.base.rest.invenio.dto</targetPackage>
+            </configuration>
             <goals>
               <goal>generate</goal>
             </goals>

@@ -1,0 +1,32 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/activitystreams",
+    "https://coar-notify.net"
+  ],
+  "id": "urn:uuid:550e8400-e29b-41d4-a716-446655440000",
+  "type": "Remove",
+  "target": {
+    "id": "https://dmptool.tuwien.ac.at/",
+    "type": "Service",
+    "inbox": "https://dmptool.tuwien.ac.at/ldn/inbox",
+    "name": "TU Wien DMP Tool"
+  },
+  "origin": {
+    "id": "https://researchdata.tuwien.ac.at/",
+    "type": "Service",
+    "inbox": "https://researchdata.tuwien.ac.at/ldn/inbox",
+    "name": "TU Wien Research Data Repository"
+  },
+  "actor": {
+    "id": "shared-id",
+    "type": "Person",
+    "name": "Valentin Futterer"
+  },
+  "object": {
+    "as:object": "https://researchdata.tuwien.ac.at/record/5zb61-c7k62",
+    "as:relationship": "https://purl.org/vocab/relationship/Relationship",
+    "as:subject": "https://dmptool.tuwien.ac.at/dmp/12345/dataset/1234567",
+    "id": "urn:uuid:74FFB356-0632-44D9-B176-888DA85758DC",
+    "type": "Relationship"
+  }
+}
