@@ -1,6 +1,7 @@
 package org.damap.base.rest;
 
 import io.quarkus.security.Authenticated;
+import jakarta.annotation.security.PermitAll;
 import jakarta.inject.Inject;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
@@ -33,10 +34,11 @@ import org.damap.base.rest.rda.service.RdaDmpService;
 import org.jboss.resteasy.reactive.server.ServerExceptionMapper;
 
 @Path("/api/rda/dmps")
-@Authenticated
+//@Authenticated // TODO: activate later
 @Produces({RdaDmpResource.RDA_MEDIA_TYPE, MediaType.APPLICATION_JSON})
 @Consumes({RdaDmpResource.RDA_MEDIA_TYPE, MediaType.APPLICATION_JSON})
 @JBossLog
+@PermitAll // TODO: REMOVE later development only
 public class RdaDmpResource {
 
   public static final String RDA_MEDIA_TYPE =
@@ -141,10 +143,11 @@ public class RdaDmpResource {
         .build();
   }
 
+
   @GET
   @Path("/{id}")
+  @PermitAll
   public Response getDMP(@PathParam("id") String id, @Context HttpHeaders headers) {
-
     long dmpId;
     try {
       dmpId = Long.parseLong(id);

@@ -75,6 +75,8 @@ public class DataCiteCommonStandardMapper {
         dmp.setId("1");
         dmpData.setEthicalIssuesExist(Booleanish.UNKNOWN);
 
+        System.out.println(dmp);
+
         return dmp;
     }
 

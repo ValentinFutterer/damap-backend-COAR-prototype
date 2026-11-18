@@ -23,8 +23,6 @@ public class CoarNotifyService {
     DatasetRecordLinkService linkService;
     @Inject
     InvenioService invenioService;
-    @Inject
-    DatasetRecordLinkService datasetRecordLinkService;
 
     public void processActivity(Activity activity) {
         // TODO: add default with defined error
@@ -53,7 +51,6 @@ public class CoarNotifyService {
         String subject = relationship.getSubject();
         this.linkService.createLink(Long.valueOf(getLastPartOfUrl(object)),getLastPartOfUrl(subject));
         // Todo: Send Accept Maybe?
-        // TODO: Make sure that one dataset can only have one relationship
     }
 
     private void processUpdate(Activity activity) {
@@ -69,7 +66,6 @@ public class CoarNotifyService {
         String recordId = getRecordIdFromInvenioContext(context);
         DatasetDO newDataset = invenioService.addDatasetToDMP(dmpId, recordId);
         this.linkService.createLink(newDataset.getId(), recordId);
-        // TODO: Send COAR message to create link in partner tool
     }
 
     private String getRecordIdFromInvenioContext(Item context) {

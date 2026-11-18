@@ -25,9 +25,8 @@ damap:
     admin-role-name: Damap Admin
 
   # DAMAPs base URL is used as an ID in the protocol
-  ldn-id: "http://localhost:4200/"
-  ldn-inbox: "http://localhost:4200/ldn/inbox"
-  ldn-name: "DAMAP"
+  ldn-id: "http://localhost:8080"
+  ldn-inbox: "http://localhost:8080/ldn/inbox"
 
   # tenant-aware here means that in case of multitenancy, these configs need to be set per tenant, and not per instance
   # for more information, see the multitenancy documentation on the website
@@ -86,8 +85,10 @@ damap:
         class-name: "org.damap.base.integration.orcid.ORCIDPersonServiceImpl"
 
     ## Set up connections to an invenio instance here
-    # Base Invenio URL
-    invenio-endpoint-url: "https://test.researchdata.tuwien.ac.at"
+    invenio-disabled: false
+    # Base Invenio URL "https://test.researchdata.tuwien.ac.at"
+    invenio-endpoint-url: "https://researchdata.tuwien.ac.at"
+    #invenio-endpoint-url: "https://127.0.0.1:5000"
     invenio-re3data-id: "r3d100013557"
 
     invenio-ldn-inbox: "https://test.researchdata.tuwien.ac.at/ldn/inbox"

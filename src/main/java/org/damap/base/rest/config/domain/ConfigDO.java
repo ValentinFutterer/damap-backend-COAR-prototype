@@ -37,6 +37,7 @@ public class ConfigDO {
   private boolean publicAvailable;
   private boolean consentFormEnabled;
   private String footerAccessibilityUrl;
+  private boolean invenioDisabled;
   private boolean multitenancyEnabled;
   private List<String> tenants;
 }

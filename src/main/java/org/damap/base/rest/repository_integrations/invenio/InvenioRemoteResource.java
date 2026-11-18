@@ -6,6 +6,7 @@ import jakarta.ws.rs.core.MediaType;
 import org.damap.base.enums.EErrorCode;
 import org.damap.base.exception.DamapApiException;
 import org.damap.base.exception.ErrorDto;
+import org.damap.base.rest.coar_notify.activity_streams.activities.Activity;
 import org.damap.base.rest.invenio.dto.DataciteV45;
 import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.faulttolerance.Timeout;
@@ -13,7 +14,7 @@ import org.jboss.logging.Logger;
 
 import java.util.List;
 
-@Path("/records")
+@Path("")
 @Produces(MediaType.APPLICATION_JSON)
 @Timeout(10000)
 public interface InvenioRemoteResource {
@@ -28,8 +29,12 @@ public interface InvenioRemoteResource {
    */
   @GET
   @Fallback(fallbackMethod = "getDataCiteDraftRecordFallback", skipOn = DamapApiException.class)
-  @Path("/{recordId}/export/datacite-json")
+  @Path("/records/{recordId}/export/datacite-json")
   DataciteV45 getDataCiteDraftRecord(@PathParam("recordId") String recordId);
+
+  @POST
+  @Path("/ldn/inbox")
+  void sendCOARNotification(Activity notification);
 
   /**
    * Retrieve all records for user with specific Id.
@@ -39,7 +44,7 @@ public interface InvenioRemoteResource {
    */
   @GET
   @Fallback(fallbackMethod = "getDataCiteDraftRecordsForUserFallback", skipOn = DamapApiException.class)
-  @Path("/export/datacite-json/{userId}")
+  @Path("/records/export/datacite-json/{userId}")
   List<DataciteV45> getDataCiteDraftRecordsForUser(@PathParam("userId") String userId);
 
   default DataciteV45 getDataCiteDraftRecordFallback(String recordId) {

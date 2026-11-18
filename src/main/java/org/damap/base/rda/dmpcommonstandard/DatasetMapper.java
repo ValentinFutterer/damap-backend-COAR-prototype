@@ -74,6 +74,9 @@ public class DatasetMapper extends AbstractMapper {
           new DatasetID().type("other").identifier(String.valueOf(datasetDO.getId())));
     }
 
+    result.setAlternateIdentifier(List.of(new AlternateIdentifier()
+            .identifier(String.valueOf(datasetDO.getId())).type("damap_id")));
+
     result.setTitle(
         datasetDO.getTitle() != null && !datasetDO.getTitle().isBlank()
             ? datasetDO.getTitle()

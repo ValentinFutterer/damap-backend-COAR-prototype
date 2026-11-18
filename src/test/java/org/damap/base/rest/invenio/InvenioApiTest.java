@@ -1,6 +1,7 @@
 package org.damap.base.rest.invenio;
 
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -8,6 +9,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.quarkus.test.InjectMock;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
+import org.damap.base.domain.User;
+import org.damap.base.repo.DamapUserRepo;
 import org.damap.base.rest.coar_notify.activity_streams.ActivityStreamsMessageGenerator;
 import org.damap.base.rest.coar_notify.activity_streams.ActivityStreamsObject;
 import org.damap.base.rest.dmp.domain.DatasetDO;
@@ -32,6 +35,9 @@ public class InvenioApiTest {
 
   @InjectMock DmpService dmpService;
 
+  @InjectMock
+  DamapUserRepo userRepo;
+
   @BeforeEach
   public void setup() {
     //super.setup();
@@ -42,6 +48,12 @@ public class InvenioApiTest {
     testDataset.setId(1L);
     testDmp.setDatasets(List.of(testDataset));
     when(dmpService.getDmpById(1)).thenReturn(testDmp);
+    when(userRepo.findUsersByNameOrEmailMatch(anyString()))
+            .thenReturn(List.of(new User("5700 7450",
+                    "Valentin Futterer",
+                    "Valentin",
+                    "Futterer",
+                    "valentin.futterer@tuwien.ac.at")));
   }
 
   @Test
@@ -55,18 +67,18 @@ public class InvenioApiTest {
   @Test
   @Disabled
   void test2() throws JsonProcessingException {
-    ActivityStreamsObject test = generator.getRelationshipOffer(1L, "1", "vc0z7-8zt24");
+    ActivityStreamsObject test = generator.getRelationshipOffer(1L, "1", "vc0z7-8zt24", "valentin.futterer@tuwien.ac.at");
     ObjectMapper mapper = new ObjectMapper();
     System.out.println("Relationship offer --------------------------------");
     System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(test));
     System.out.println("Update --------------------------------------------");
-    ActivityStreamsObject test2 = generator.getUpdate(1L, "1");
+    ActivityStreamsObject test2 = generator.getUpdate(1L, "1", "valentin.futterer@tuwien.ac.at");
     System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(test2));
     System.out.println("Announce --------------------------------------------");
-    ActivityStreamsObject test3 = generator.getAnnounce(1L, "1");
+    ActivityStreamsObject test3 = generator.getAnnounce(1L, "1", "valentin.futterer@tuwien.ac.at");
     System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(test3));
     System.out.println("Remove --------------------------------------------");
-    ActivityStreamsObject test4 = generator.getRemove(1L, "1", "vc0z7-8zt24");
+    ActivityStreamsObject test4 = generator.getRemove(1L, "1", "vc0z7-8zt24", "valentin.futterer@tuwien.ac.at");
     System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(test4));
     fail();
   }

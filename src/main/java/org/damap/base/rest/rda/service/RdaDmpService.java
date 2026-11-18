@@ -157,9 +157,12 @@ public class RdaDmpService {
 
     ensureDmpExists(dmpId);
 
+    // TODO: Reactivate this, its only deactivated for development
+    /*
     if (!accessValidator.canViewDmp(dmpId, personId)) {
       throw new ForbiddenException(unauthorizedMessage(dmpId));
     }
+    */
 
     DmpDO dmp = dmpService.getDmpById(dmpId);
 

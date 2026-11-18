@@ -126,6 +126,8 @@ public class ConfigResource {
     configDO.setConsentFormEnabled(instanceConfig.getConsentFormEnabled());
     configDO.setFooterAccessibilityUrl(instanceConfig.getFooterAccessibilityUrl());
 
+    configDO.setInvenioDisabled(tenantAwareConfig.invenioDisabled());
+
     configDO.setMultitenancyEnabled(!tenantConfigResolver.isMultitenancyDisabled());
     configDO.setTenants(tenants.orElse(List.of()));
     return configDO;

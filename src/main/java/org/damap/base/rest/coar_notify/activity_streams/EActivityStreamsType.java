@@ -16,7 +16,7 @@ public enum EActivityStreamsType {
   SERVICE("Service"),
   ACTIVITY("Activity"),
   DELETE("Delete"),
-  RELATIONSHIP_ACTION("http://coar-notify.net/specification/vocabulary/RelationshipAction"),
+  RELATIONSHIP_ACTION("coar-notify:RelationshipAction"),
   REMOVE("Remove"),
   UPDATE("Update"),
   ANNOUNCE("Announce");

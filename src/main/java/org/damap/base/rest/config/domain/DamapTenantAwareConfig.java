@@ -37,6 +37,8 @@ public interface DamapTenantAwareConfig {
 
   Optional<String> genericCrisApiKey();
 
+  boolean invenioDisabled();
+
   String invenioEndpointUrl();
 
   String invenioRe3dataId();
